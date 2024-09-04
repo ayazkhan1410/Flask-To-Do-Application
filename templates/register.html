@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+{% block body %}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px;">
+        <h3 class="text-center mb-4">Register</h3>
+        <form method="post">
+            <!-- Name input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="registerName">Name</label>
+                <input type="text" id="registerName" name="name" class="form-control" required />
+            </div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" name="email" class="form-control" required />
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="registerPassword">Password</label>
+                <input type="password" id="registerPassword" name="password" class="form-control" required />
+            </div>
+
+            <!-- Repeat Password input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="registerRepeatPassword">Repeat Password</label>
+                <input type="password" id="registerRepeatPassword" name="repeat_password" class="form-control" required />
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

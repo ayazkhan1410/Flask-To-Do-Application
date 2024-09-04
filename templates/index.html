@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+<title> {% block title %} Home {% endblock %} </title>
+{% block body %}
+<style>
+  .todo-form {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  .todo-table {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .table th, .table td {
+    text-align: center;
+    border-right: 1px solid #dee2e6; /* Vertical lines between columns */
+    padding: 12px;
+  }
+  .table th:last-child, .table td:last-child {
+    border-right: none; /* Remove line on the last column */
+  }
+  .table thead th {
+    background-color: #f1f1f1;
+    border-bottom: 2px solid #dee2e6;
+  }
+  .table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  .table tbody tr:hover {
+    background-color: #e9ecef;
+  }
+</style>
+
+<div class="container my-5">
+  <div class="todo-form">
+    <h1 class="mb-4">Add Your Todo</h1>
+    <form action="/" method="post">
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Todo Title</label>
+        <input type="text" name="title" class="form-control" id="title" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="desc" class="form-label">Todo Description</label>
+        <textarea class="form-control" name="desc" id="desc" rows="3" required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="container my-5">
+  <h1 class="mb-4">Your Todos</h1>
+  {% if AllTodo|length == 0 %}
+    <div class="alert alert-dark" role="alert">
+      No Todo Found
+    </div>
+  {% else %}
+    <div class="todo-table">
+      <table class="table table-striped">
+
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for item in AllTodo %}
+          <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ item.title }}</td>
+            <td>{{ item.desc }}</td>
+            <td>{{ item.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+            <td>
+              <a href="/update/{{ item.sno }}" class="btn btn-outline-dark btn-sm my-2">Update</a>
+              <a href="/delete/{{ item.sno }}" class="btn btn-outline-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+
+      </table>
+    </div>
+  {% endif %}
+</div>
+{% endblock body %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block body %}
+<style>
+  .hero-section {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 50px 0;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .hero-section h1 {
+    font-size: 3rem;
+    color: #343a40;
+  }
+  .hero-section p {
+    font-size: 1.25rem;
+    color: #495057;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .container {
+    padding-top: 30px;
+  }
+  hr {
+    border-top: 2px solid #dee2e6;
+    margin: 20px 0;
+  }
+</style>
+
+<div class="hero-section my-5">
+    <div class="container">
+        <h1>About</h1>
+        <hr>
+        <p>
+            Welcome to our simple todo app built with Flask. This application allows you to easily manage your tasks by adding, updating, deleting, and searching your todos. Whether you're tracking daily tasks or long-term projects, our app provides a clean and intuitive interface to help you stay organized and productive.
+        </p>
+    </div>
+</div>
+{% endblock body %}
